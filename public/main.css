@@ -3,7 +3,43 @@ body {
     font-family: sans-serif;
 }
 
+header {
+    text-align: center;
+}
 
 table {
     padding: 30px;
+}
+
+.form-frame {
+    display: block;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+
+.user-input {
+    text-align: left;
+    padding: 10px;
+}
+
+#name {
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#country {
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#message {
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
 }

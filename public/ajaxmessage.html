@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css">
@@ -13,20 +14,23 @@
     <main>
         <div class ="form-frame">
         <form action="/newmessage" method="post">
-            <div class="user-input">
+            <div>
                 <label for="name">Name*:</label>
-                <div><input type="text" id="name" name="name" placeholder="Your name"></div>
+                <input type="text" id="name" name="name" placeholder="Your name">
             </div>
-            <div class="user-input">
+            <div>
                 <label for="country">Country*:</label>
-                <div><input type="text" id="country" name="country" placeholder="Where are you from?"></div>
+                <input type="text" id="country" name="country" placeholder="Where are you from?">
             </div>
-            <div class="user-input">
+            <div>
                 <label for="message">Message*:</label>
-                <div><input type="text" id="message" name="message" placeholder="Please behave, my teacher can see eveyrthing you write."></div>
+                <input type="text" id="message" name="message" placeholder="Please behave, my teacher can see eveyrthing you write.">
             </div>
-            <button type="submit">Send</button>
+            <button id="sendajax" type="submit">Send</button>
         </form>
+        </div>
+        <div class = "ajax-messages">
+            
         </div>
     </main>
 </body>
