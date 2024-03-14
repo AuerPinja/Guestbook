@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Pinja's Guestbook</title>
+</head>
+<body>
+    <header>
+        <h1>New message</h1>
+    </header>
+    <main>
+        <div class ="form-frame">
+        <form action="/newmessage" method="post">
+            <div>
+                <label for="name">Name*:</label>
+                <input type="text" id="name" name="name" placeholder="Your name">
+            </div>
+            <div>
+                <label for="country">Country*:</label>
+                <input type="text" id="country" name="country" placeholder="Where are you from?">
+            </div>
+            <div>
+                <label for="message">Message*:</label>
+                <input type="text" id="message" name="message" placeholder="Please behave, my teacher can see eveyrthing you write.">
+            </div>
+            <button type="submit">Send</button>
+        </form>
+        </div>
+    </main>
+</body>
+</html>
