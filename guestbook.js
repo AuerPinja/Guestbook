@@ -41,6 +41,7 @@ app.get("/messages", function (req, res) {
     "<tr><td style=\"font-size: 12px; padding-bottom: 10px\"><i>" + data[i].Date + ", " + data[i].Country + "</i></td>" +
     "<tr><td>" + data[i].Message + "</td>" +
     "</table>"+ "<hr>"
+
      
   }
 
@@ -54,7 +55,7 @@ app.get("/newmessage", function (req, res) {
 
 // lisätään POST polku (route) joka hakee tiedot ja tallentaa ne messages.json tiedostoon.
 app.post("/newmessage", function (req, res) {
-  // Load the existing data from a file and assign to an array (lista)
+  // Haetaan olemassaoleva JSON-data ja laitetaan se array-listaan
   const data = require(__dirname + "/data/messages.json");
 
   //luodaan uusi viesti
@@ -69,7 +70,7 @@ app.post("/newmessage", function (req, res) {
     new Date().getFullYear();
 
  
-  //...pusketaan viesti JSON-tiedostoon
+  // pusketaan viesti JSON-tiedostoon
   data.push({
     "Name": nimi,
     "Country": country,
@@ -79,10 +80,10 @@ app.post("/newmessage", function (req, res) {
 
   console.log(data);
 
-  // Convert the JSON object to a string format
+  // muunnetaan JSON data string-muotoon
   var jsonStr = JSON.stringify(data);
 
-  // Write data to a file
+  // Kirjoitetaan syötetty data JSON-tiedostoon ja ilmoitetaan käyttäjälle oliko viesti lähetetty
   fs.writeFile(__dirname + "/data/messages.json", jsonStr, (err) => {
     if (err) throw err;
     console.log("Message was sent.");
