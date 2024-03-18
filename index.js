@@ -53,6 +53,12 @@ app.get("/newmessage", function (req, res) {
   res.sendFile(__dirname + "/public/newmessage.html");
 });
 
+
+// hakee ajaxmessage.html -tiedoston datan ja lähettää sen selaimeen
+app.get("/ajaxmessage", function (req, res) {
+  res.sendFile(__dirname + "/public/newmessage.html");
+});
+
 // lisätään POST polku (route) joka hakee tiedot ja tallentaa ne messages.json tiedostoon.
 app.post("/newmessage", function (req, res) {
   // Haetaan olemassaoleva JSON-data ja laitetaan se array-listaan
@@ -89,6 +95,44 @@ app.post("/newmessage", function (req, res) {
     console.log("Message was sent.");
   });
   res.send("Message sent successfully! Check the messages <a href=\"/messages\">here!</a>");
+});
+
+// lisätään POST polku (route) joka hakee tiedot, tallentaa ne messages.json-tiedostoon, tekee kyseiseen tiedostoon AJAX-kutsun ja näyttää viestit lomakkeen alla heti
+app.post("/ajaxmessage", function (req, res) {
+  // Haetaan olemassaoleva JSON-data ja laitetaan se array-listaan
+  const data = require(__dirname + "/data/messages.json");
+
+  //luodaan uusi viesti
+  const nimi = req.body.name;
+  const country = req.body.country;
+  const message = req.body.message;
+  const date =
+    new Date().getDate() +
+    "." +
+    (1 + parseInt(new Date().getMonth())) +
+    "." +
+    new Date().getFullYear();
+
+ 
+  // pusketaan viesti JSON-tiedostoon
+  data.push({
+    "Name": nimi,
+    "Country": country,
+    "Message": message,
+    "Date": date,
+  });
+
+  console.log(data);
+
+  // muunnetaan JSON data string-muotoon
+  var jsonStr = JSON.stringify(data);
+
+  // Kirjoitetaan syötetty data JSON-tiedostoon ja ilmoitetaan käyttäjälle oliko viesti lähetetty
+  fs.writeFile(__dirname + "/data/messages.json", jsonStr, (err) => {
+    if (err) throw err;
+    console.log("Message was sent.");
+  });
+  //res.send("Message sent successfully! Check the messages <a href=\"/messages\">here!</a>");
 });
 
 // käynnistetään palvelin kuuntelemaan valittua porttia
