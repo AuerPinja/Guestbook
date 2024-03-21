@@ -56,7 +56,7 @@ app.get("/newmessage", function (req, res) {
 
 // hakee ajaxmessage.html -tiedoston datan ja lähettää sen selaimeen
 app.get("/ajaxmessage", function (req, res) {
-  res.sendFile(__dirname + "/public/newmessage.html");
+  res.sendFile(__dirname + "/public/ajaxmessage.html");
 });
 
 // lisätään POST polku (route) joka hakee tiedot ja tallentaa ne messages.json tiedostoon.
@@ -132,7 +132,13 @@ app.post("/ajaxmessage", function (req, res) {
     if (err) throw err;
     console.log("Message was sent.");
   });
-  //res.send("Message sent successfully! Check the messages <a href=\"/messages\">here!</a>");
+
+  res.status(200).send('Message sent successfully!');
+});
+
+// näyttää error.html-sivun jos käyttäjä yrittää hakea reittejä, joita ei ole olemassa
+app.get("*", function (req, res) {
+  res.sendFile(__dirname + "/public/error.html");
 });
 
 // käynnistetään palvelin kuuntelemaan valittua porttia

@@ -12,18 +12,18 @@
     </header>
     <main>
         <div class ="form-frame">
-        <form action="/ajaxmessage" method="send">
-            <div>
+        <form id="lomake" action="/ajaxmessage" method="post">
+            <div class ="user-input">
                 <label for="name">Name*:</label>
-                <input type="text" id="name" name="name" placeholder="Your name">
+                <input type="text" id="name" name="name" placeholder="Your name" required>
             </div>
-            <div>
+            <div class ="user-input">
                 <label for="country">Country*:</label>
-                <input type="text" id="country" name="country" placeholder="Where are you from?">
+                <input type="text" id="country" name="country" placeholder="Where are you from?" required>
             </div>
-            <div>
+            <div class ="user-input">
                 <label for="message">Message*:</label>
-                <input type="text" id="message" name="message" placeholder="Please behave, my teacher can see eveyrthing you write.">
+                <input type="text" id="message" name="message" placeholder="Please behave, my teacher can see everything you write." required>
             </div>
             <button id="sendajax" type="submit">Send</button>
         </form>
@@ -31,7 +31,8 @@
         <div id = "ajaxMessages">
             
         </div>
+        <script src="/script.js"></script>
     </main>
 </body>
-<script src="script.js"></script>
+
 </html>

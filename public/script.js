@@ -1,26 +1,36 @@
 let button = document.querySelector("#sendajax");
 let ajaxContainer = document.querySelector("#ajaxMessages");
+let ajaxForm = document.querySelector("#lomake");
 
-button.addEventListener("click", function(){getMessages()});
+ajaxForm.addEventListener("submit", function(event){
+    event.preventDefault();
+    let formData = new FormData(ajaxForm);
 
-function getMessages(){
+    console.log(formData)
 
-    // Luo käyttäjän luvun perusteella hakuosoitteen
-    data = "../data/messages.json"
+    // Tehdään AJAX-pyyntö tallentamaan viesti
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/ajaxmessage");
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Päivitetään viestit näyttämällä ne uudelleen AJAXin kautta
+            loadMessages();
+        } else {
+            console.error('Viestin tallennuksessa tapahtui virhe');
+        }
+    };
+    xhr.send(formData);
+})
 
-    console.log(data);
-
-    // Tehdään API kutsu
-    var myRequest = new XMLHttpRequest();
-    myRequest.open('GET', data, true);
-    myRequest.onload = function(){
-        var data = JSON.parse(myRequest.responseText);
-        // Järjestetään pelit alehinnan mukaan suurimmasta pienempään
-        steamData.sort(function (a, b) {
-            return b.salePrice - a.salePrice;
-        });
-        // Lähetetään saatu data renderHTML funktioon kirjoittamaan haluttu data dokumenttiin
-        renderHTML(steamData);
-        };
-    myRequest.send();
+function loadMessages() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/messages");
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            ajaxContainer.innerHTML = xhr.responseText;
+        } else {
+            console.error('Viestien hakemisessa tapahtui virhe');
+        }
+    };
+    xhr.send();
 }
