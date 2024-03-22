@@ -133,7 +133,7 @@ app.post("/ajaxmessage", function (req, res) {
     console.log("Message was sent.");
   });
 
-  res.status(200).send('Message sent successfully!');
+  res.status(204).send();
 });
 
 // näyttää error.html-sivun jos käyttäjä yrittää hakea reittejä, joita ei ole olemassa
