@@ -44,7 +44,7 @@ app.get("/messages", function (req, res) {
 
      
   }
-  results += "<img src=\"dancecat.gif\" width=100px align=\"right\">"
+  results += "<img src=\"dancecat.gif\" width=100px align=\"right\"></div>"
 
   res.send(results);
 });
