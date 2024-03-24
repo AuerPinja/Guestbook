@@ -49,12 +49,6 @@ app.get("/messages", function (req, res) {
   res.send(results);
 });
 
-// hakee newmessage.html -tiedoston datan ja lähettää sen selaimeen
-app.get("/newmessage", function (req, res) {
-  res.sendFile(__dirname + "/public/newmessage.html");
-});
-
-
 // hakee ajaxmessage.html -tiedoston datan ja lähettää sen selaimeen
 app.get("/ajaxmessage", function (req, res) {
   res.sendFile(__dirname + "/public/ajaxmessage.html");
