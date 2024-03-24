@@ -32,7 +32,7 @@ app.get("/messages", function (req, res) {
   var data = require(__dirname + "/data/messages.json");
 
   // Luodaan div, johon JSON-tiedoston sisältö asetetaan
-  var results = '<div style=\"font-family: Verdana; padding: 30px; margin: 10px; background: aliceblue\">';
+  var results = '<div style=\"font-family: Comic Sans MS; padding: 30px; margin: 10px; background: aliceblue\">';
 
   for (var i = 0; i < data.length; i++) {
     results +=
@@ -44,6 +44,7 @@ app.get("/messages", function (req, res) {
 
      
   }
+  results += "<img src=\"dancecat.gif\" width=100px align=\"right\">"
 
   res.send(results);
 });
@@ -97,7 +98,7 @@ app.post("/newmessage", function (req, res) {
   res.send("Message sent successfully! Check the messages <a href=\"/messages\">here!</a>");
 });
 
-// lisätään POST polku (route) joka hakee tiedot, tallentaa ne messages.json-tiedostoon, tekee kyseiseen tiedostoon AJAX-kutsun ja näyttää viestit lomakkeen alla heti
+// lisätään POST polku joka hakee tiedot, tallentaa ne messages.json-tiedostoon, ja ilmoittaa statuskoodi 204:lla, ettei käyttäjää uudelleenohjata
 app.post("/ajaxmessage", function (req, res) {
   // Haetaan olemassaoleva JSON-data ja laitetaan se array-listaan
   const data = require(__dirname + "/data/messages.json");

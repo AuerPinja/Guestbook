@@ -1,6 +1,7 @@
 body {
     text-align: center;
-    font-family: sans-serif;
+    font-family: "Comic Sans MS";
+    background: aliceblue;
 }
 
 header {
@@ -46,4 +47,11 @@ table {
 
 #ajaxMessages {
     text-align: left;
+    border: 1px black solid;
+    margin-top: 10px;
+}
+
+.kittycat {
+    margin-top: 20px;
+    width: 300px;
 }

@@ -4,6 +4,7 @@ let ajaxForm = document.querySelector("#lomake");
 
 ajaxForm.addEventListener("submit", function(){
 
+    // Tehdään AJAX-kutsu, joka hakee viestit /messages-reitiltä
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/messages");
     xhr.onload = function() {
